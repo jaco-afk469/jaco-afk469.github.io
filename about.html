@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - OmniConvert</title>
+  <link rel="canonical" href="https://jaco-afk469.github.io/omniconvert/about.html" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-sans antialiased">
+  <header class="border-b border-slate-800 bg-slate-900/90 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center text-white font-bold">⚡</div>
+        <span class="font-extrabold text-lg text-white">OmniConvert</span>
+      </a>
+      <a href="index.html" class="text-sm text-blue-400 hover:text-blue-300">← Back to Converter</a>
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-4xl mx-auto w-full px-4 py-12">
+    <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-8 sm:p-12 shadow-xl">
+      <h1 class="text-3xl font-extrabold text-white mb-6">About OmniConvert</h1>
+      
+      <div class="space-y-6 text-sm text-slate-300 leading-relaxed">
+        <p>OmniConvert was founded on a simple principle: <strong>converting an image should not require sending private files across the internet to remote servers</strong>.</p>
+
+        <h2 class="text-lg font-bold text-white mt-8 mb-2">Why Client-Side Matters</h2>
+        <p>Traditional image converters upload your files to remote cloud buckets. This creates three critical problems:</p>
+        <ul class="list-disc list-inside space-y-2 text-slate-400">
+          <li><strong>Privacy Vulnerabilities:</strong> Confidential screenshots, receipts, private photos, and business assets are exposed to server logs and third-party data breaches.</li>
+          <li><strong>Slow Uploads:</strong> Large DSLR photos or multi-megabyte assets take valuable seconds or minutes just to upload before converting.</li>
+          <li><strong>Server Outages & File Limits:</strong> Traditional websites impose restrictive file size limits and queue wait times.</li>
+        </ul>
+
+        <h2 class="text-lg font-bold text-white mt-8 mb-2">How OmniConvert Solves This</h2>
+        <p>Using modern HTML5 Canvas, WebAssembly, and native hardware acceleration built into modern web browsers, OmniConvert reads and re-encodes images entirely on your local machine. No data ever leaves your device, providing instant speed, zero upload delay, and ironclad privacy.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-t border-slate-800 bg-slate-900 py-6 px-4 text-center text-xs text-slate-500">
+    <p>© 2026 OmniConvert. All rights reserved.</p>
+  </footer>
+</body>
+</html>

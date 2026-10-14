@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jaco-afk469.github.io/omniconvert/sitemap.xml

@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OmniConvert - 100% Private In-Browser Image Converter & Compressor</title>
+  <meta name="description" content="Convert and compress WebP, PNG, JPG, and SVG images locally in your browser. Fast, free, and 100% private. Files never leave your device.">
+  
+  <!-- Canonical & SEO -->
+  <link rel="canonical" href="https://jaco-afk469.github.io/omniconvert/" />
+  <link rel="alternate" hreflang="en" href="https://jaco-afk469.github.io/omniconvert/?lang=en" />
+  <link rel="alternate" hreflang="de" href="https://jaco-afk469.github.io/omniconvert/?lang=de" />
+  <link rel="alternate" hreflang="es" href="https://jaco-afk469.github.io/omniconvert/?lang=es" />
+  <link rel="alternate" hreflang="pt" href="https://jaco-afk469.github.io/omniconvert/?lang=pt" />
+  <link rel="alternate" hreflang="fr" href="https://jaco-afk469.github.io/omniconvert/?lang=fr" />
+  <link rel="alternate" hreflang="it" href="https://jaco-afk469.github.io/omniconvert/?lang=it" />
+  <link rel="alternate" hreflang="x-default" href="https://jaco-afk469.github.io/omniconvert/" />
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:title" content="OmniConvert - 100% Private In-Browser Image Converter" />
+  <meta property="og:description" content="Fast, client-side WebP, PNG, JPG image converter. Zero server uploads, total privacy." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jaco-afk469.github.io/omniconvert/" />
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Structured Data (JSON-LD WebApplication) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "OmniConvert",
+    "url": "https://jaco-afk469.github.io/omniconvert/",
+    "description": "Free, 100% private client-side image converter and compressor supporting WebP, PNG, and JPEG.",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <style>
+    * { transition: background-color 0.2s ease, border-color 0.2s ease; }
+    .drop-active { border-color: #3b82f6 !important; background-color: rgba(59, 130, 246, 0.08) !important; }
+    .ad-banner-slot {
+      background: repeating-linear-gradient(45deg, rgba(148, 163, 184, 0.05), rgba(148, 163, 184, 0.05) 10px, transparent 10px, transparent 20px);
+    }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-sans antialiased selection:bg-blue-500 selection:text-white">
+
+  <!-- ================= TOP NAVBAR & LANGUAGE SWITCHER ================= -->
+  <header class="border-b border-slate-800 bg-slate-900/90 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-blue-500/20 text-white font-bold text-xl group-hover:scale-105 transition-transform">
+            ⚡
+          </div>
+          <div>
+            <span class="font-extrabold text-lg tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">OmniConvert</span>
+            <span class="hidden sm:inline-block ml-2 px-2 py-0.5 text-xs font-medium rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              🔒 100% Client-Side
+            </span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Navigation & Language Selector -->
+      <div class="flex items-center gap-4">
+        <nav class="hidden md:flex items-center gap-5 text-sm text-slate-400">
+          <a href="about.html" class="hover:text-white transition-colors">About</a>
+          <a href="privacy.html" class="hover:text-white transition-colors">Privacy</a>
+          <a href="contact.html" class="hover:text-white transition-colors">Contact</a>
+        </nav>
+
+        <div class="flex items-center gap-2">
+          <label for="lang-select" class="text-xs text-slate-400 hidden sm:inline" id="lang-label">Language:</label>
+          <div class="relative">
+            <select id="lang-select" class="appearance-none bg-slate-800 border border-slate-700 text-slate-200 text-sm rounded-lg px-3 py-1.5 pr-8 focus:ring-2 focus:ring-blue-500 focus:outline-none cursor-pointer">
+              <option value="en">🇬🇧 English</option>
+              <option value="de">🇩🇪 Deutsch</option>
+              <option value="es">🇪🇸 Español</option>
+              <option value="pt">🇧🇷 Português</option>
+              <option value="fr">🇫🇷 Français</option>
+              <option value="it">🇮🇹 Italiano</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-400">
+              ▼
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= TOP ADVERTISEMENT SLOT (Responsive Leaderboard) ================= -->
+  <aside class="max-w-4xl mx-auto w-full px-4 pt-4" aria-label="Advertisement">
+    <div class="ad-banner-slot border border-dashed border-slate-700/80 rounded-xl p-3 text-center text-xs text-slate-500 flex flex-col items-center justify-center min-h-[90px]">
+      <span class="uppercase tracking-widest text-[10px] text-slate-400 font-semibold mb-1">Sponsored / Advertisement</span>
+      <!-- 
+        [GOOGLE ADSENSE READY]
+        Paste your Google AdSense code below:
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      -->
+      <div class="text-slate-400 italic">Ad Space • Responsive 728x90 Leaderboard / Mobile Banner</div>
+    </div>
+  </aside>
+
+  <!-- ================= MAIN APP SECTION ================= -->
+  <main class="flex-grow max-w-4xl mx-auto w-full px-4 py-8">
+    
+    <!-- Hero / Headline -->
+    <div class="text-center mb-8">
+      <h1 id="hero-title" class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-3">
+        Private Image Converter & Compressor
+      </h1>
+      <p id="hero-subtitle" class="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto">
+        Convert and optimize WebP, PNG, JPG & SVG directly in your browser. Your images never leave your computer.
+      </p>
+    </div>
+
+    <!-- Dropzone Card -->
+    <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-6 sm:p-8 shadow-2xl backdrop-blur mb-8">
+      <div id="dropzone" class="border-2 border-dashed border-slate-600 hover:border-blue-500 rounded-xl p-8 text-center cursor-pointer transition-all duration-200">
+        <input type="file" id="file-input" accept="image/*" class="hidden">
+        
+        <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-3xl">
+          📁
+        </div>
+        
+        <h3 id="drop-title" class="text-lg font-bold text-white mb-1">
+          Drop your image here, or browse
+        </h3>
+        <p id="drop-subtitle" class="text-sm text-slate-400 mb-4">
+          Supports WebP, PNG, JPG, JPEG, SVG, BMP (No file size limits)
+        </p>
+        <button type="button" class="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm shadow-lg shadow-blue-600/30">
+          <span id="btn-select">Select File from Device</span>
+        </button>
+      </div>
+
+      <!-- Controls & Preview Panel (Hidden until image is selected) -->
+      <div id="workspace" class="hidden mt-8 pt-8 border-t border-slate-700/80">
+        
+        <!-- Image Info Bar -->
+        <div class="flex flex-wrap items-center justify-between gap-4 p-4 rounded-xl bg-slate-900/60 border border-slate-700/60 mb-6">
+          <div class="flex items-center gap-3">
+            <img id="thumb-preview" class="w-12 h-12 rounded-lg object-cover border border-slate-700" alt="Preview">
+            <div>
+              <p id="file-name" class="font-semibold text-white text-sm truncate max-w-xs"></p>
+              <p id="original-info" class="text-xs text-slate-400"></p>
+            </div>
+          </div>
+          <button id="btn-remove" class="text-xs text-rose-400 hover:text-rose-300 font-medium">✕ <span id="remove-text">Remove</span></button>
+        </div>
+
+        <!-- Conversion Settings Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+          
+          <!-- Format Selector -->
+          <div>
+            <label id="lbl-format" class="block text-sm font-medium text-slate-300 mb-2">Target Format</label>
+            <div class="grid grid-cols-3 gap-2">
+              <button type="button" class="format-btn active px-3 py-2 rounded-lg text-sm font-semibold border border-blue-500 bg-blue-500/20 text-blue-300" data-format="image/webp">WebP</button>
+              <button type="button" class="format-btn px-3 py-2 rounded-lg text-sm font-semibold border border-slate-700 bg-slate-800 text-slate-300 hover:border-slate-500" data-format="image/png">PNG</button>
+              <button type="button" class="format-btn px-3 py-2 rounded-lg text-sm font-semibold border border-slate-700 bg-slate-800 text-slate-300 hover:border-slate-500" data-format="image/jpeg">JPEG</button>
+            </div>
+          </div>
+
+          <!-- Quality Slider -->
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <label id="lbl-quality" class="text-sm font-medium text-slate-300">Quality / Compression</label>
+              <span id="quality-val" class="text-sm font-bold text-blue-400">85%</span>
+            </div>
+            <input type="range" id="quality-slider" min="10" max="100" value="85" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-500">
+            <div class="flex justify-between text-[11px] text-slate-400 mt-1">
+              <span id="slider-min">Smaller size</span>
+              <span id="slider-max">Higher quality</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action & Result Banner -->
+        <div class="p-5 rounded-xl bg-gradient-to-r from-blue-900/30 to-indigo-900/30 border border-blue-500/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <div class="flex items-center gap-2">
+              <span id="status-badge" class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span id="result-savings" class="font-bold text-emerald-400 text-sm">Ready to convert</span>
+            </div>
+            <p id="result-details" class="text-xs text-slate-400 mt-0.5">Calculated instantly with client-side canvas</p>
+          </div>
+
+          <a id="download-link" class="w-full sm:w-auto text-center px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-lg shadow-emerald-600/30 cursor-pointer transition-transform active:scale-95">
+            ⬇ <span id="btn-download">Download Converted Image</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ================= MIDDLE ADVERTISEMENT SLOT ================= -->
+    <aside class="w-full mb-12" aria-label="Advertisement">
+      <div class="ad-banner-slot border border-dashed border-slate-700/80 rounded-xl p-4 text-center text-xs text-slate-500 flex flex-col items-center justify-center min-h-[120px]">
+        <span class="uppercase tracking-widest text-[10px] text-slate-400 font-semibold mb-1">Sponsored Content</span>
+        <div class="text-slate-400 italic">In-Feed Responsive Display Ad Space</div>
+      </div>
+    </aside>
+
+    <!-- ================= PRIVACY & FEATURE HIGHLIGHTS ================= -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      <div class="p-5 rounded-xl bg-slate-800/40 border border-slate-700/60">
+        <div class="text-2xl mb-2">🛡️</div>
+        <h4 id="feat1-title" class="font-bold text-white mb-1">Zero Server Upload</h4>
+        <p id="feat1-desc" class="text-xs text-slate-400">Processing is powered 100% by your browser's WebAssembly and Canvas. No data ever reaches any external server.</p>
+      </div>
+
+      <div class="p-5 rounded-xl bg-slate-800/40 border border-slate-700/60">
+        <div class="text-2xl mb-2">⚡</div>
+        <h4 id="feat2-title" class="font-bold text-white mb-1">Instant Speed</h4>
+        <p id="feat2-desc" class="text-xs text-slate-400">No waiting queues, no upload delays, and no file size limits. Conversions happen in milliseconds on your device.</p>
+      </div>
+
+      <div class="p-5 rounded-xl bg-slate-800/40 border border-slate-700/60">
+        <div class="text-2xl mb-2">🎁</div>
+        <h4 id="feat3-title" class="font-bold text-white mb-1">Completely Free Forever</h4>
+        <p id="feat3-desc" class="text-xs text-slate-400">No subscriptions, no hidden limits, and no watermark on your exported images.</p>
+      </div>
+    </div>
+
+    <!-- ================= SEO FAQ SECTION (Multilingual) ================= -->
+    <section class="border-t border-slate-800 pt-10">
+      <h2 id="faq-headline" class="text-2xl font-bold text-white text-center mb-6">Frequently Asked Questions</h2>
+      
+      <div class="space-y-4 max-w-2xl mx-auto">
+        <details class="group bg-slate-800/40 border border-slate-700/60 rounded-xl p-4 cursor-pointer">
+          <summary id="faq1-q" class="font-semibold text-sm text-slate-200 list-none flex justify-between items-center">
+            Are my photos or documents uploaded anywhere?
+            <span class="group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p id="faq1-a" class="mt-3 text-xs text-slate-400 leading-relaxed">
+            Never. Unlike other online converters that upload your photos to remote cloud servers, OmniConvert runs entirely on your local machine using client-side JavaScript. It is 100% GDPR and privacy compliant.
+          </p>
+        </details>
+
+        <details class="group bg-slate-800/40 border border-slate-700/60 rounded-xl p-4 cursor-pointer">
+          <summary id="faq2-q" class="font-semibold text-sm text-slate-200 list-none flex justify-between items-center">
+            Why convert images to WebP?
+            <span class="group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p id="faq2-a" class="mt-3 text-xs text-slate-400 leading-relaxed">
+            WebP is a modern image format developed by Google that provides 30% to 80% smaller file sizes than JPEG and PNG without noticeable loss of image quality, boosting website loading speed and SEO.
+          </p>
+        </details>
+
+        <details class="group bg-slate-800/40 border border-slate-700/60 rounded-xl p-4 cursor-pointer">
+          <summary id="faq3-q" class="font-semibold text-sm text-slate-200 list-none flex justify-between items-center">
+            Is there a file size or quantity limit?
+            <span class="group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p id="faq3-a" class="mt-3 text-xs text-slate-400 leading-relaxed">
+            There are zero server-imposed limits because the work is executed using your own computer's memory. You can convert high-resolution DSLR photos or large graphics seamlessly.
+          </p>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER & ESSENTIAL PAGES (AdSense Ready) ================= -->
+  <footer class="border-t border-slate-800 bg-slate-900 py-8 px-4 text-center">
+    <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+      <p>© 2026 OmniConvert. 100% Private Client-Side Image Engine.</p>
+      
+      <div class="flex items-center gap-4">
+        <a href="about.html" class="hover:text-slate-300">About</a>
+        <a href="privacy.html" class="hover:text-slate-300">Privacy Policy</a>
+        <a href="terms.html" class="hover:text-slate-300">Terms of Service</a>
+        <a href="contact.html" class="hover:text-slate-300">Contact</a>
+      </div>
+
+      <!-- Monetization: Passive Coffee / Donation Link -->
+      <a href="https://ko-fi.com" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 font-medium">
+        ☕ <span id="tip-text">Buy me a coffee</span>
+      </a>
+    </div>
+  </footer>
+
+  <!-- ================= CLIENT-SIDE ENGINE & i18n SCRIPT ================= -->
+  <script>
+    const translations = {
+      en: {
+        langLabel: "Language:",
+        heroTitle: "Private Image Converter & Compressor",
+        heroSubtitle: "Convert and optimize WebP, PNG, JPG & SVG directly in your browser. Your images never leave your computer.",
+        dropTitle: "Drop your image here, or browse",
+        dropSubtitle: "Supports WebP, PNG, JPG, JPEG, SVG, BMP (No file size limits)",
+        btnSelect: "Select File from Device",
+        removeText: "Remove",
+        lblFormat: "Target Format",
+        lblQuality: "Quality / Compression",
+        sliderMin: "Smaller size",
+        sliderMax: "Higher quality",
+        btnDownload: "Download Converted Image",
+        feat1Title: "Zero Server Upload",
+        feat1Desc: "Processing is powered 100% by your browser's WebAssembly and Canvas. No data ever reaches any external server.",
+        feat2Title: "Instant Speed",
+        feat2Desc: "No waiting queues, no upload delays, and no file size limits. Conversions happen in milliseconds on your device.",
+        feat3Title: "Completely Free Forever",
+        feat3Desc: "No subscriptions, no hidden limits, and no watermark on your exported images.",
+        faqHeadline: "Frequently Asked Questions",
+        faq1Q: "Are my photos or documents uploaded anywhere?",
+        faq1A: "Never. Unlike other online converters that upload your photos to remote cloud servers, OmniConvert runs entirely on your local machine using client-side JavaScript. It is 100% GDPR and privacy compliant.",
+        faq2Q: "Why convert images to WebP?",
+        faq2A: "WebP is a modern image format developed by Google that provides 30% to 80% smaller file sizes than JPEG and PNG without noticeable loss of image quality.",
+        faq3Q: "Is there a file size or quantity limit?",
+        faq3A: "There are zero server-imposed limits because the work is executed using your own computer's memory. You can convert high-resolution photos seamlessly.",
+        tipText: "Buy me a coffee"
+      },
+      de: {
+        langLabel: "Sprache:",
+        heroTitle: "Privater Bildkonverter & Komprimierer",
+        heroSubtitle: "Konvertieren und optimieren Sie WebP, PNG, JPG & SVG direkt im Browser. 100% DSGVO-konform: Dateien verlassen niemals Ihr Gerät.",
+        dropTitle: "Bild hierher ziehen oder durchsuchen",
+        dropSubtitle: "Unterstützt WebP, PNG, JPG, JPEG, SVG, BMP (Keine Größenbeschränkung)",
+        btnSelect: "Datei vom Gerät auswählen",
+        removeText: "Entfernen",
+        lblFormat: "Zielformat",
+        lblQuality: "Qualität / Kompression",
+        sliderMin: "Kleinere Dateigröße",
+        sliderMax: "Höchste Qualität",
+        btnDownload: "Konvertiertes Bild herunterladen",
+        feat1Title: "Kein Server-Upload",
+        feat1Desc: "Die Verarbeitung erfolgt zu 100% lokal im Browser. Es werden keinerlei Daten auf externe Server übertragen.",
+        feat2Title: "Sofortige Geschwindigkeit",
+        feat2Desc: "Keine Warteschlangen, keine Upload-Verzögerungen. Die Konvertierung geschieht in Millisekunden auf Ihrem Rechner.",
+        feat3Title: "100% Kostenlos für immer",
+        feat3Desc: "Keine Abonnements, keine versteckten Limits und niemals Wasserzeichen auf Ihren Bildern.",
+        faqHeadline: "Häufig gestellte Fragen (FAQ)",
+        faq1Q: "Werden meine Dateien irgendwo hochgeladen?",
+        faq1A: "Niemals. OmniConvert arbeitet komplett lokal in Ihrem Browser und ist 100% datenschutzkonform nach DSGVO.",
+        faq2Q: "Warum Bilder in WebP umwandeln?",
+        faq2A: "WebP ist ein modernes Google-Bildformat, das Bilder um bis zu 80% verkleinert, ohne sichtbaren Qualitätsverlust.",
+        faq3Q: "Gibt es ein Dateigrößen-Limit?",
+        faq3A: "Nein, da kein Server beansprucht wird, gibt es keine künstlichen Limits.",
+        tipText: "Einen Kaffee spendieren"
+      },
+      es: {
+        langLabel: "Idioma:",
+        heroTitle: "Convertidor y Compresor de Imágenes Privado",
+        heroSubtitle: "Convierte y optimiza WebP, PNG, JPG y SVG directamente en tu navegador. Tus fotos nunca salen de tu ordenador.",
+        dropTitle: "Arrastra tu imagen aquí o explora",
+        dropSubtitle: "Compatible con WebP, PNG, JPG, JPEG, SVG, BMP (Sin límites)",
+        btnSelect: "Seleccionar archivo del dispositivo",
+        removeText: "Eliminar",
+        lblFormat: "Formato de salida",
+        lblQuality: "Calidad / Compresión",
+        sliderMin: "Menor tamaño",
+        sliderMax: "Mayor calidad",
+        btnDownload: "Descargar Imagen Convertida",
+        feat1Title: "Cero Subida a Servidores",
+        feat1Desc: "Todo el procesamiento se ejecuta 100% en tu navegador. Ningún dato sale de tu dispositivo.",
+        feat2Title: "Velocidad Instantánea",
+        feat2Desc: "Sin colas de espera ni retrasos de carga. Las conversiones ocurren en milisegundos.",
+        feat3Title: "Totalmente Gratis para Siempre",
+        feat3Desc: "Sin suscripciones, sin límites ocultos y sin marcas de agua.",
+        faqHeadline: "Preguntas Frecuentes",
+        faq1Q: "¿Mis imágenes se suben a algún servidor?",
+        faq1A: "Jamás. Todo funciona de forma local en tu navegador con total privacidad.",
+        faq2Q: "¿Por qué convertir a WebP?",
+        faq2A: "WebP reduce el tamaño del archivo entre un 30% y un 80% comparado con JPG y PNG.",
+        faq3Q: "¿Hay límites de tamaño de archivo?",
+        faq3A: "No hay ningún límite impuesto por servidor.",
+        tipText: "Invítame a un café"
+      },
+      pt: {
+        langLabel: "Idioma:",
+        heroTitle: "Conversor e Compressor de Imagens Privado",
+        heroSubtitle: "Converta e comprima WebP, PNG, JPG e SVG diretamente no navegador. 100% privado: seus arquivos nunca saem do aparelho.",
+        dropTitle: "Arraste sua imagem aqui ou clique para buscar",
+        dropSubtitle: "Suporta WebP, PNG, JPG, JPEG, SVG, BMP (Sem limites)",
+        btnSelect: "Selecionar arquivo do dispositivo",
+        removeText: "Remover",
+        lblFormat: "Formato de Destino",
+        lblQuality: "Qualidade / Compressão",
+        sliderMin: "Menor tamanho",
+        sliderMax: "Maior qualidade",
+        btnDownload: "Baixar Imagem Convertida",
+        feat1Title: "Zero Envio para Servidor",
+        feat1Desc: "O processamento ocorre 100% no seu navegador. Privacidade total garantida.",
+        feat2Title: "Velocidade Instantânea",
+        feat2Desc: "Sem filas de espera. As conversões acontecem em milissegundos no seu computador.",
+        feat3Title: "Completamente Grátis",
+        feat3Desc: "Sem assinaturas, sem limites ocultos e sem marcas d'água.",
+        faqHeadline: "Perguntas Frequentes",
+        faq1Q: "Meus arquivos são enviados para algum servidor?",
+        faq1A: "Nunca. Todo o processamento é feito localmente no seu navegador.",
+        faq2Q: "Por que converter para WebP?",
+        faq2A: "O formato WebP reduz até 80% do tamanho da imagem mantendo alta fidelidade visual.",
+        faq3Q: "Existe limite de tamanho de imagem?",
+        faq3A: "Nenhum limite: seu próprio processador faz todo o trabalho.",
+        tipText: "Pagar um café"
+      },
+      fr: {
+        langLabel: "Langue:",
+        heroTitle: "Convertisseur d'Images Privé & Local",
+        heroSubtitle: "Convertissez et compressez WebP, PNG, JPG & SVG directement dans votre navigateur. 100% confidentiel.",
+        dropTitle: "Glissez votre image ici ou parcourez",
+        dropSubtitle: "Prend en charge WebP, PNG, JPG, JPEG, SVG, BMP",
+        btnSelect: "Choisir un fichier",
+        removeText: "Supprimer",
+        lblFormat: "Format cible",
+        lblQuality: "Qualité / Compression",
+        sliderMin: "Taille réduite",
+        sliderMax: "Haute qualité",
+        btnDownload: "Télécharger l'image convertie",
+        feat1Title: "Zéro Envoi vers un Serveur",
+        feat1Desc: "Tout s'exécute localement dans votre navigateur. Aucune donnée n'est transmise.",
+        feat2Title: "Vitesse Instantanée",
+        feat2Desc: "Pas de files d'attente ni de limites de transfert.",
+        feat3Title: "100% Gratuit pour Toujours",
+        feat3Desc: "Sans abonnement et sans filigrane sur vos images.",
+        faqHeadline: "Foire Aux Questions",
+        faq1Q: "Mes photos sont-elles téléchargées en ligne?",
+        faq1A: "Absolument pas. Tout le traitement se fait sur votre machine.",
+        faq2Q: "Pourquoi convertir au format WebP?",
+        faq2A: "WebP réduit le poids des images de 30% à 80% par rapport au JPEG et PNG.",
+        faq3Q: "Y a-t-il une limite de taille?",
+        faq3A: "Aucune limite imposée par un serveur.",
+        tipText: "Offrez-moi un café"
+      },
+      it: {
+        langLabel: "Lingua:",
+        heroTitle: "Convertitore & Compressore di Immagini Privato",
+        heroSubtitle: "Converti e comprimi WebP, PNG, JPG e SVG direttamente nel tuo browser. 100% privato: i file non lasciano mai il tuo dispositivo.",
+        dropTitle: "Trascina la tua immagine qui o sfoglia",
+        dropSubtitle: "Supporta WebP, PNG, JPG, JPEG, SVG, BMP (Nessun limite di dimensione)",
+        btnSelect: "Seleziona file dal dispositivo",
+        removeText: "Rimuovi",
+        lblFormat: "Formato di destinazione",
+        lblQuality: "Qualità / Compressione",
+        sliderMin: "Dimensione ridotta",
+        sliderMax: "Massima qualità",
+        btnDownload: "Scarica Immagine Convertita",
+        feat1Title: "Zero Caricamento su Server",
+        feat1Desc: "L'elaborazione avviene al 100% nella memoria del tuo browser. Nessun dato lascia il tuo computer.",
+        feat2Title: "Velocità Istantanea",
+        feat2Desc: "Nessuna coda di attesa, conversioni immediate in frazioni di secondo.",
+        feat3Title: "Completamente Gratuito per Sempre",
+        feat3Desc: "Nessun abbonamento, nessun limite nascosto e nessuna filigrana sulle tue foto.",
+        faqHeadline: "Domande Frequenti",
+        faq1Q: "I miei file vengono caricati su qualche server?",
+        faq1A: "Mai. L'elaborazione sfrutta il motore grafico del tuo browser nel rispetto totale della privacy e del GDPR.",
+        faq2Q: "Perché convertire in formato WebP?",
+        faq2A: "Il formato WebP riduce il peso dei file fino all'80% rispetto a JPG e PNG a parità di qualità.",
+        faq3Q: "Ci sono limiti sul peso dei file?",
+        faq3A: "Nessun limite: puoi elaborare immagini ad altissima risoluzione senza restrizioni.",
+        tipText: "Offrimi un caffè"
+      }
+    };
+
+    function getInitialLanguage() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlLang = urlParams.get('lang');
+      if (urlLang && translations[urlLang]) return urlLang;
+
+      const storedLang = localStorage.getItem('omni_user_lang');
+      if (storedLang && translations[storedLang]) return storedLang;
+
+      const navLang = (navigator.language || navigator.userLanguage || 'en').slice(0, 2).toLowerCase();
+      return translations[navLang] ? navLang : 'en';
+    }
+
+    function applyLanguage(lang) {
+      const t = translations[lang] || translations.en;
+      document.documentElement.lang = lang;
+      localStorage.setItem('omni_user_lang', lang);
+      document.getElementById('lang-select').value = lang;
+
+      document.getElementById('lang-label').textContent = t.langLabel;
+      document.getElementById('hero-title').textContent = t.heroTitle;
+      document.getElementById('hero-subtitle').textContent = t.heroSubtitle;
+      document.getElementById('drop-title').textContent = t.dropTitle;
+      document.getElementById('drop-subtitle').textContent = t.dropSubtitle;
+      document.getElementById('btn-select').textContent = t.btnSelect;
+      document.getElementById('remove-text').textContent = t.removeText;
+      document.getElementById('lbl-format').textContent = t.lblFormat;
+      document.getElementById('lbl-quality').textContent = t.lblQuality;
+      document.getElementById('slider-min').textContent = t.sliderMin;
+      document.getElementById('slider-max').textContent = t.sliderMax;
+      document.getElementById('btn-download').textContent = t.btnDownload;
+
+      document.getElementById('feat1-title').textContent = t.feat1Title;
+      document.getElementById('feat1-desc').textContent = t.feat1Desc;
+      document.getElementById('feat2-title').textContent = t.feat2Title;
+      document.getElementById('feat2-desc').textContent = t.feat2Desc;
+      document.getElementById('feat3-title').textContent = t.feat3Title;
+      document.getElementById('feat3-desc').textContent = t.feat3Desc;
+
+      document.getElementById('faq-headline').textContent = t.faqHeadline;
+      document.getElementById('faq1-q').childNodes[0].textContent = t.faq1Q + ' ';
+      document.getElementById('faq1-a').textContent = t.faq1A;
+      document.getElementById('faq2-q').childNodes[0].textContent = t.faq2Q + ' ';
+      document.getElementById('faq2-a').textContent = t.faq2A;
+      document.getElementById('faq3-q').childNodes[0].textContent = t.faq3Q + ' ';
+      document.getElementById('faq3-a').textContent = t.faq3A;
+      document.getElementById('tip-text').textContent = t.tipText;
+    }
+
+    let currentImage = null;
+    let originalFile = null;
+    let selectedFormat = 'image/webp';
+
+    const dropzone = document.getElementById('dropzone');
+    const fileInput = document.getElementById('file-input');
+    const workspace = document.getElementById('workspace');
+    const thumbPreview = document.getElementById('thumb-preview');
+    const fileName = document.getElementById('file-name');
+    const originalInfo = document.getElementById('original-info');
+    const qualitySlider = document.getElementById('quality-slider');
+    const qualityVal = document.getElementById('quality-val');
+    const downloadLink = document.getElementById('download-link');
+    const resultSavings = document.getElementById('result-savings');
+    const resultDetails = document.getElementById('result-details');
+    const formatButtons = document.querySelectorAll('.format-btn');
+
+    function formatBytes(bytes) {
+      if (bytes === 0) return '0 Bytes';
+      const k = 1024;
+      const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+
+    dropzone.addEventListener('click', () => fileInput.click());
+    
+    ['dragenter', 'dragover'].forEach(name => {
+      dropzone.addEventListener(name, (e) => {
+        e.preventDefault();
+        dropzone.classList.add('drop-active');
+      });
+    });
+
+    ['dragleave', 'drop'].forEach(name => {
+      dropzone.addEventListener(name, (e) => {
+        e.preventDefault();
+        dropzone.classList.remove('drop-active');
+      });
+    });
+
+    dropzone.addEventListener('drop', (e) => {
+      if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+        handleFile(e.dataTransfer.files[0]);
+      }
+    });
+
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files && e.target.files[0]) {
+        handleFile(e.target.files[0]);
+      }
+    });
+
+    function handleFile(file) {
+      if (!file.type.startsWith('image/')) {
+        alert('Please select a valid image file.');
+        return;
+      }
+      originalFile = file;
+      fileName.textContent = file.name;
+      originalInfo.textContent = `Original: ${formatBytes(file.size)}`;
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        currentImage = new Image();
+        currentImage.onload = () => {
+          thumbPreview.src = e.target.result;
+          workspace.classList.remove('hidden');
+          processConversion();
+        };
+        currentImage.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    formatButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        formatButtons.forEach(b => {
+          b.classList.remove('active', 'border-blue-500', 'bg-blue-500/20', 'text-blue-300');
+          b.classList.add('border-slate-700', 'bg-slate-800', 'text-slate-300');
+        });
+        btn.classList.add('active', 'border-blue-500', 'bg-blue-500/20', 'text-blue-300');
+        btn.classList.remove('border-slate-700', 'bg-slate-800', 'text-slate-300');
+        selectedFormat = btn.dataset.format;
+        processConversion();
+      });
+    });
+
+    qualitySlider.addEventListener('input', (e) => {
+      qualityVal.textContent = `${e.target.value}%`;
+      processConversion();
+    });
+
+    document.getElementById('btn-remove').addEventListener('click', () => {
+      workspace.classList.add('hidden');
+      fileInput.value = '';
+      currentImage = null;
+      originalFile = null;
+    });
+
+    function processConversion() {
+      if (!currentImage) return;
+
+      const canvas = document.createElement('canvas');
+      canvas.width = currentImage.naturalWidth || currentImage.width;
+      canvas.height = currentImage.naturalHeight || currentImage.height;
+
+      const ctx = canvas.getContext('2d');
+      if (selectedFormat === 'image/jpeg') {
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
+      ctx.drawImage(currentImage, 0, 0);
+
+      const quality = parseInt(qualitySlider.value, 10) / 100;
+
+      canvas.toBlob((blob) => {
+        if (!blob) return;
+
+        const newSize = blob.size;
+        const diff = originalFile.size - newSize;
+        const percent = ((diff / originalFile.size) * 100).toFixed(1);
+
+        if (percent > 0) {
+          resultSavings.textContent = `Reduced by -${percent}% (${formatBytes(newSize)})`;
+          resultSavings.className = 'font-bold text-emerald-400 text-sm';
+        } else {
+          resultSavings.textContent = `New size: ${formatBytes(newSize)}`;
+          resultSavings.className = 'font-bold text-blue-400 text-sm';
+        }
+
+        resultDetails.textContent = `${canvas.width}×${canvas.height}px • ${selectedFormat.replace('image/', '').toUpperCase()}`;
+
+        if (downloadLink.href) URL.revokeObjectURL(downloadLink.href);
+        const url = URL.createObjectURL(blob);
+        downloadLink.href = url;
+        
+        const ext = selectedFormat === 'image/webp' ? 'webp' : (selectedFormat === 'image/png' ? 'png' : 'jpg');
+        const baseName = originalFile.name.substring(0, originalFile.name.lastIndexOf('.')) || originalFile.name;
+        downloadLink.download = `${baseName}-converted.${ext}`;
+
+      }, selectedFormat, quality);
+    }
+
+    const activeLang = getInitialLanguage();
+    applyLanguage(activeLang);
+
+    document.getElementById('lang-select').addEventListener('change', (e) => {
+      applyLanguage(e.target.value);
+    });
+  </script>
+</body>
+</html>
