@@ -58,7 +58,7 @@
     <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
       <div class="flex items-center gap-3">
         <a href="index.html" class="flex items-center">
-          <span class="font-extrabold text-xl tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">OmniConvert</span>
+          <span class="font-extrabold text-2xl tracking-tight text-white hover:text-slate-200 transition-colors">OmniConverter</span>
         </a>
       </div>
 
@@ -73,35 +73,35 @@
         <!-- Custom Dropdown with Visible SVG Flags -->
         <div class="relative" id="lang-dropdown">
           <button id="lang-menu-btn" type="button" class="flex items-center gap-2.5 bg-slate-800 hover:bg-slate-700/80 border border-slate-700 text-slate-200 text-sm rounded-lg px-3 py-1.5 focus:ring-2 focus:ring-blue-500 focus:outline-none cursor-pointer transition-colors">
-            <span id="active-flag-icon" class="flex items-center"></span>
-            <span id="active-lang-name" class="font-medium">English</span>
-            <svg class="w-4 h-4 text-slate-400 transition-transform duration-200" id="lang-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            <span id="active-flag-icon" class="flex items-center pointer-events-none"></span>
+            <span id="active-lang-name" class="font-medium pointer-events-none">English</span>
+            <svg class="w-4 h-4 text-slate-400 transition-transform duration-200 pointer-events-none" id="lang-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </button>
           
           <div id="lang-menu" class="hidden absolute right-0 mt-1.5 w-40 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl z-50 py-1.5 backdrop-blur">
-            <button type="button" class="lang-item w-full flex items-center gap-2.5 px-3 py-2 text-sm text-slate-200 hover:bg-slate-700 text-left transition-colors" data-lang="en">
-              <svg class="w-5 h-3.5 rounded-sm shadow-sm shrink-0" viewBox="0 0 60 30"><clipPath id="s"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(#s)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></g></svg>
-              <span>English</span>
+            <button type="button" class="lang-item w-full flex items-center gap-2.5 px-3 py-2 text-sm text-slate-200 hover:bg-slate-700 text-left transition-colors cursor-pointer" data-lang="en">
+              <svg class="w-5 h-3.5 rounded-sm shadow-sm shrink-0 pointer-events-none" viewBox="0 0 60 30"><clipPath id="s"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(#s)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></g></svg>
+              <span class="pointer-events-none font-medium">English</span>
             </button>
-            <button type="button" class="lang-item w-full flex items-center gap-2.5 px-3 py-2 text-sm text-slate-200 hover:bg-slate-700 text-left transition-colors" data-lang="de">
-              <svg class="w-5 h-3.5 rounded-sm shadow-sm shrink-0" viewBox="0 0 5 3"><rect width="5" height="1" y="0" fill="#000"/><rect width="5" height="1" y="1" fill="#D00"/><rect width="5" height="1" y="2" fill="#FFCE00"/></svg>
-              <span>Deutsch</span>
+            <button type="button" class="lang-item w-full flex items-center gap-2.5 px-3 py-2 text-sm text-slate-200 hover:bg-slate-700 text-left transition-colors cursor-pointer" data-lang="de">
+              <svg class="w-5 h-3.5 rounded-sm shadow-sm shrink-0 pointer-events-none" viewBox="0 0 5 3"><rect width="5" height="1" y="0" fill="#000"/><rect width="5" height="1" y="1" fill="#D00"/><rect width="5" height="1" y="2" fill="#FFCE00"/></svg>
+              <span class="pointer-events-none font-medium">Deutsch</span>
             </button>
-            <button type="button" class="lang-item w-full flex items-center gap-2.5 px-3 py-2 text-sm text-slate-200 hover:bg-slate-700 text-left transition-colors" data-lang="es">
-              <svg class="w-5 h-3.5 rounded-sm shadow-sm shrink-0" viewBox="0 0 750 500"><rect width="750" height="500" fill="#c60b1e"/><rect width="750" height="250" y="125" fill="#ffc400"/></svg>
-              <span>Español</span>
+            <button type="button" class="lang-item w-full flex items-center gap-2.5 px-3 py-2 text-sm text-slate-200 hover:bg-slate-700 text-left transition-colors cursor-pointer" data-lang="es">
+              <svg class="w-5 h-3.5 rounded-sm shadow-sm shrink-0 pointer-events-none" viewBox="0 0 750 500"><rect width="750" height="500" fill="#c60b1e"/><rect width="750" height="250" y="125" fill="#ffc400"/></svg>
+              <span class="pointer-events-none font-medium">Español</span>
             </button>
-            <button type="button" class="lang-item w-full flex items-center gap-2.5 px-3 py-2 text-sm text-slate-200 hover:bg-slate-700 text-left transition-colors" data-lang="pt">
-              <svg class="w-5 h-3.5 rounded-sm shadow-sm shrink-0" viewBox="0 0 720 504"><rect width="720" height="504" fill="#009c3b"/><polygon points="360,40 680,252 360,464 40,252" fill="#ffdf00"/><circle cx="360" cy="252" r="105" fill="#002776"/></svg>
-              <span>Português</span>
+            <button type="button" class="lang-item w-full flex items-center gap-2.5 px-3 py-2 text-sm text-slate-200 hover:bg-slate-700 text-left transition-colors cursor-pointer" data-lang="pt">
+              <svg class="w-5 h-3.5 rounded-sm shadow-sm shrink-0 pointer-events-none" viewBox="0 0 720 504"><rect width="720" height="504" fill="#009c3b"/><polygon points="360,40 680,252 360,464 40,252" fill="#ffdf00"/><circle cx="360" cy="252" r="105" fill="#002776"/></svg>
+              <span class="pointer-events-none font-medium">Português</span>
             </button>
-            <button type="button" class="lang-item w-full flex items-center gap-2.5 px-3 py-2 text-sm text-slate-200 hover:bg-slate-700 text-left transition-colors" data-lang="fr">
-              <svg class="w-5 h-3.5 rounded-sm shadow-sm shrink-0" viewBox="0 0 3 2"><rect width="1" height="2" x="0" fill="#002395"/><rect width="1" height="2" x="1" fill="#fff"/><rect width="1" height="2" x="2" fill="#ED2939"/></svg>
-              <span>Français</span>
+            <button type="button" class="lang-item w-full flex items-center gap-2.5 px-3 py-2 text-sm text-slate-200 hover:bg-slate-700 text-left transition-colors cursor-pointer" data-lang="fr">
+              <svg class="w-5 h-3.5 rounded-sm shadow-sm shrink-0 pointer-events-none" viewBox="0 0 3 2"><rect width="1" height="2" x="0" fill="#002395"/><rect width="1" height="2" x="1" fill="#fff"/><rect width="1" height="2" x="2" fill="#ED2939"/></svg>
+              <span class="pointer-events-none font-medium">Français</span>
             </button>
-            <button type="button" class="lang-item w-full flex items-center gap-2.5 px-3 py-2 text-sm text-slate-200 hover:bg-slate-700 text-left transition-colors" data-lang="it">
-              <svg class="w-5 h-3.5 rounded-sm shadow-sm shrink-0" viewBox="0 0 3 2"><rect width="1" height="2" x="0" fill="#009246"/><rect width="1" height="2" x="1" fill="#fff"/><rect width="1" height="2" x="2" fill="#ce2b37"/></svg>
-              <span>Italiano</span>
+            <button type="button" class="lang-item w-full flex items-center gap-2.5 px-3 py-2 text-sm text-slate-200 hover:bg-slate-700 text-left transition-colors cursor-pointer" data-lang="it">
+              <svg class="w-5 h-3.5 rounded-sm shadow-sm shrink-0 pointer-events-none" viewBox="0 0 3 2"><rect width="1" height="2" x="0" fill="#009246"/><rect width="1" height="2" x="1" fill="#fff"/><rect width="1" height="2" x="2" fill="#ce2b37"/></svg>
+              <span class="pointer-events-none font-medium">Italiano</span>
             </button>
           </div>
         </div>
@@ -521,6 +521,11 @@
       it: "Italiano"
     };
 
+    function safeSetText(id, text) {
+      const el = document.getElementById(id);
+      if (el && text !== undefined) el.textContent = text;
+    }
+
     function applyLanguage(lang) {
       const t = translations[lang] || translations.en;
       document.documentElement.lang = lang;
@@ -531,34 +536,40 @@
       const langNameEl = document.getElementById('active-lang-name');
       if (langNameEl) langNameEl.textContent = langNames[lang] || "English";
 
-      document.getElementById('lang-label').textContent = t.langLabel;
-      document.getElementById('hero-title').textContent = t.heroTitle;
-      document.getElementById('hero-subtitle').textContent = t.heroSubtitle;
-      document.getElementById('drop-title').textContent = t.dropTitle;
-      document.getElementById('drop-subtitle').textContent = t.dropSubtitle;
-      document.getElementById('btn-select').textContent = t.btnSelect;
-      document.getElementById('remove-text').textContent = t.removeText;
-      document.getElementById('lbl-format').textContent = t.lblFormat;
-      document.getElementById('lbl-quality').textContent = t.lblQuality;
-      document.getElementById('slider-min').textContent = t.sliderMin;
-      document.getElementById('slider-max').textContent = t.sliderMax;
-      document.getElementById('btn-download').textContent = t.btnDownload;
+      safeSetText('hero-title', t.heroTitle);
+      safeSetText('hero-subtitle', t.heroSubtitle);
+      safeSetText('drop-title', t.dropTitle);
+      safeSetText('drop-subtitle', t.dropSubtitle);
+      safeSetText('btn-select', t.btnSelect);
+      safeSetText('remove-text', t.removeText);
+      safeSetText('lbl-format', t.lblFormat);
+      safeSetText('lbl-quality', t.lblQuality);
+      safeSetText('slider-min', t.sliderMin);
+      safeSetText('slider-max', t.sliderMax);
+      safeSetText('btn-download', t.btnDownload);
 
-      document.getElementById('feat1-title').textContent = t.feat1Title;
-      document.getElementById('feat1-desc').textContent = t.feat1Desc;
-      document.getElementById('feat2-title').textContent = t.feat2Title;
-      document.getElementById('feat2-desc').textContent = t.feat2Desc;
-      document.getElementById('feat3-title').textContent = t.feat3Title;
-      document.getElementById('feat3-desc').textContent = t.feat3Desc;
+      safeSetText('feat1-title', t.feat1Title);
+      safeSetText('feat1-desc', t.feat1Desc);
+      safeSetText('feat2-title', t.feat2Title);
+      safeSetText('feat2-desc', t.feat2Desc);
+      safeSetText('feat3-title', t.feat3Title);
+      safeSetText('feat3-desc', t.feat3Desc);
 
-      document.getElementById('faq-headline').textContent = t.faqHeadline;
-      document.getElementById('faq1-q').querySelector('span').textContent = t.faq1Q;
-      document.getElementById('faq1-a').textContent = t.faq1A;
-      document.getElementById('faq2-q').querySelector('span').textContent = t.faq2Q;
-      document.getElementById('faq2-a').textContent = t.faq2A;
-      document.getElementById('faq3-q').querySelector('span').textContent = t.faq3Q;
-      document.getElementById('faq3-a').textContent = t.faq3A;
-      document.getElementById('tip-text').textContent = t.tipText;
+      safeSetText('faq-headline', t.faqHeadline);
+
+      const f1 = document.getElementById('faq1-q');
+      if (f1 && f1.querySelector('span')) f1.querySelector('span').textContent = t.faq1Q;
+      safeSetText('faq1-a', t.faq1A);
+
+      const f2 = document.getElementById('faq2-q');
+      if (f2 && f2.querySelector('span')) f2.querySelector('span').textContent = t.faq2Q;
+      safeSetText('faq2-a', t.faq2A);
+
+      const f3 = document.getElementById('faq3-q');
+      if (f3 && f3.querySelector('span')) f3.querySelector('span').textContent = t.faq3Q;
+      safeSetText('faq3-a', t.faq3A);
+
+      safeSetText('tip-text', t.tipText);
     }
 
     let currentImage = null;
@@ -715,22 +726,28 @@
 
     if (langBtn && langMenu) {
       langBtn.addEventListener('click', (e) => {
+        e.preventDefault();
         e.stopPropagation();
         const isHidden = langMenu.classList.contains('hidden');
         langMenu.classList.toggle('hidden', !isHidden);
         if (langArrow) langArrow.classList.toggle('rotate-180', isHidden);
       });
 
-      document.addEventListener('click', () => {
-        langMenu.classList.add('hidden');
-        if (langArrow) langArrow.classList.remove('rotate-180');
+      document.addEventListener('click', (e) => {
+        if (!langMenu.classList.contains('hidden') && !langBtn.contains(e.target)) {
+          langMenu.classList.add('hidden');
+          if (langArrow) langArrow.classList.remove('rotate-180');
+        }
       });
 
       document.querySelectorAll('.lang-item').forEach(item => {
         item.addEventListener('click', (e) => {
+          e.preventDefault();
           e.stopPropagation();
-          const selected = item.dataset.lang;
-          applyLanguage(selected);
+          const selected = item.getAttribute('data-lang') || item.dataset.lang;
+          if (selected) {
+            applyLanguage(selected);
+          }
           langMenu.classList.add('hidden');
           if (langArrow) langArrow.classList.remove('rotate-180');
         });
