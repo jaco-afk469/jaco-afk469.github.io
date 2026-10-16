@@ -112,17 +112,27 @@
     </div>
   </header>
 
-  <!-- ================= TOP ADVERTISEMENT SLOT (Responsive Leaderboard) ================= -->
-  <aside class="max-w-4xl mx-auto w-full px-4 pt-4" aria-label="Advertisement">
-    <div class="ad-banner-slot border border-dashed border-slate-700/80 rounded-xl p-3 text-center text-xs text-slate-500 flex flex-col items-center justify-center min-h-[90px]">
-      <span class="uppercase tracking-widest text-[10px] text-slate-400 font-semibold mb-1">Sponsored / Advertisement</span>
-      <!-- 
-        [GOOGLE ADSENSE READY]
-        Paste your Google AdSense code below:
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-      -->
-      <div class="text-slate-400 italic">Ad Space • Responsive 728x90 Leaderboard / Mobile Banner</div>
+  <!-- ================= TOP SPONSOR / PROMO BANNER ================= -->
+  <aside class="max-w-4xl mx-auto w-full px-4 pt-4" aria-label="Sponsored Partner">
+    <div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-blue-950/70 via-indigo-950/60 to-purple-950/70 border border-indigo-500/30 p-4 sm:p-5 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3.5 text-left">
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white shrink-0 shadow-lg shadow-indigo-500/20">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center gap-2 mb-0.5">
+            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">Sponsored</span>
+            <span class="text-xs font-semibold text-white" id="ad-top-brand">Vectorizer AI & Design Suite</span>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-300 font-medium" id="ad-top-text">Turn pixelated images into razor-sharp SVG vectors instantly with AI.</p>
+        </div>
+      </div>
+      <a href="https://vectorizer.ai" target="_blank" rel="noopener sponsored" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs tracking-wide shadow-lg shadow-indigo-600/30 shrink-0 transition-transform active:scale-95">
+        <span id="ad-top-btn">Try Free</span>
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
     </div>
   </aside>
 
@@ -227,11 +237,32 @@
       </div>
     </div>
 
-    <!-- ================= MIDDLE ADVERTISEMENT SLOT ================= -->
-    <aside class="w-full mb-12" aria-label="Advertisement">
-      <div class="ad-banner-slot border border-dashed border-slate-700/80 rounded-xl p-4 text-center text-xs text-slate-500 flex flex-col items-center justify-center min-h-[120px]">
-        <span class="uppercase tracking-widest text-[10px] text-slate-400 font-semibold mb-1">Sponsored Content</span>
-        <div class="text-slate-400 italic">In-Feed Responsive Display Ad Space</div>
+    <!-- ================= MIDDLE SPONSORED TOOL BANNER ================= -->
+    <aside class="w-full mb-12" aria-label="Sponsored Tool">
+      <div class="rounded-2xl bg-gradient-to-br from-slate-800/90 via-slate-850 to-slate-800/90 border border-slate-700/80 p-5 sm:p-6 shadow-xl flex flex-col md:flex-row items-center justify-between gap-5">
+        <div class="flex items-start sm:items-center gap-4 text-left">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-white shrink-0 shadow-lg shadow-cyan-500/20">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="18" height="18" x="3" y="3" rx="2" ry="2"/>
+              <circle cx="9" cy="9" r="2"/>
+              <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
+            </svg>
+          </div>
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">Partner Tool</span>
+              <span class="text-xs text-slate-400">1-Click Automation</span>
+            </div>
+            <h3 class="text-sm sm:text-base font-bold text-white mb-0.5" id="ad-mid-title">Need Instant AI Background Removal?</h3>
+            <p class="text-xs text-slate-400 max-w-xl" id="ad-mid-desc">Erase photo backgrounds in 5 seconds with 100% precision. Free to test, perfect for e-commerce and creators.</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3 w-full md:w-auto shrink-0 justify-end">
+          <a href="https://www.remove.bg" target="_blank" rel="noopener sponsored" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-semibold text-xs tracking-wide shadow-lg shadow-cyan-600/30 transition-transform active:scale-95">
+            <span id="ad-mid-btn">Remove Backgrounds Free</span>
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
       </div>
     </aside>
 
@@ -350,7 +381,13 @@
         faq2A: "WebP is a modern image format developed by Google that provides 30% to 80% smaller file sizes than JPEG and PNG without noticeable loss of image quality.",
         faq3Q: "Is there a file size or quantity limit?",
         faq3A: "There are zero server-imposed limits because the work is executed using your own computer's memory. You can convert high-resolution photos seamlessly.",
-        tipText: "Buy me a coffee"
+        tipText: "Buy me a coffee",
+        adTopBrand: "Vectorizer AI & Design Suite",
+        adTopText: "Turn pixelated images into razor-sharp SVG vectors instantly with AI.",
+        adTopBtn: "Try Free",
+        adMidTitle: "Need Instant AI Background Removal?",
+        adMidDesc: "Erase photo backgrounds in 5 seconds with 100% precision. Free to test, perfect for e-commerce and creators.",
+        adMidBtn: "Remove Backgrounds Free"
       },
       de: {
         langLabel: "Sprache:",
@@ -378,7 +415,13 @@
         faq2A: "WebP ist ein modernes Google-Bildformat, das Bilder um bis zu 80% verkleinert, ohne sichtbaren Qualitätsverlust.",
         faq3Q: "Gibt es ein Dateigrößen-Limit?",
         faq3A: "Nein, da kein Server beansprucht wird, gibt es keine künstlichen Limits.",
-        tipText: "Einen Kaffee spendieren"
+        tipText: "Einen Kaffee spendieren",
+        adTopBrand: "Vectorizer AI Suite",
+        adTopText: "Verwandeln Sie pixelige Bilder mit KI sofort in gestochen scharfe SVG-Vektoren.",
+        adTopBtn: "Kostenlos testen",
+        adMidTitle: "Hintergrund per KI sofort entfernen?",
+        adMidDesc: "Entfernen Sie Bildhintergründe in 5 Sekunden mit 100% Präzision. Ideal für E-Commerce und Creator.",
+        adMidBtn: "Hintergrund kostenlos entfernen"
       },
       es: {
         langLabel: "Idioma:",
@@ -406,7 +449,13 @@
         faq2A: "WebP reduce el tamaño del archivo entre un 30% y un 80% comparado con JPG y PNG.",
         faq3Q: "¿Hay límites de tamaño de archivo?",
         faq3A: "No hay ningún límite impuesto por servidor.",
-        tipText: "Invítame a un café"
+        tipText: "Invítame a un café",
+        adTopBrand: "Vectorizer AI Suite",
+        adTopText: "Convierte imágenes pixeladas en vectores SVG nítidos al instante con IA.",
+        adTopBtn: "Probar gratis",
+        adMidTitle: "¿Necesitas quitar fondos con IA al instante?",
+        adMidDesc: "Elimina fondos de fotos en 5 segundos con precisión total. Gratis para probar.",
+        adMidBtn: "Quitar fondos gratis"
       },
       pt: {
         langLabel: "Idioma:",
@@ -434,7 +483,13 @@
         faq2A: "O formato WebP reduz até 80% do tamanho da imagem mantendo alta fidelidade visual.",
         faq3Q: "Existe limite de tamanho de imagem?",
         faq3A: "Nenhum limite: seu próprio processador faz todo o trabalho.",
-        tipText: "Pagar um café"
+        tipText: "Pagar um café",
+        adTopBrand: "Vectorizer AI Suite",
+        adTopText: "Transforme imagens pixeladas em vetores SVG perfeitos com IA.",
+        adTopBtn: "Testar grátis",
+        adMidTitle: "Remover fundo de fotos com IA instantaneamente?",
+        adMidDesc: "Apague fundos em 5 segundos com precisão total. Perfeito para e-commerce.",
+        adMidBtn: "Remover fundo grátis"
       },
       fr: {
         langLabel: "Langue:",
@@ -462,7 +517,13 @@
         faq2A: "WebP réduit le poids des images de 30% à 80% par rapport au JPEG et PNG.",
         faq3Q: "Y a-t-il une limite de taille?",
         faq3A: "Aucune limite imposée par un serveur.",
-        tipText: "Offrez-moi un café"
+        tipText: "Offrez-moi un café",
+        adTopBrand: "Vectorizer AI Suite",
+        adTopText: "Transformez des images en vecteurs SVG haute définition avec l'IA.",
+        adTopBtn: "Essai gratuit",
+        adMidTitle: "Suppression de fond par IA instantanée ?",
+        adMidDesc: "Effacez l'arrière-plan en 5 secondes avec une précision chirurgicale.",
+        adMidBtn: "Détourer gratuitement"
       },
       it: {
         langLabel: "Lingua:",
@@ -490,7 +551,13 @@
         faq2A: "Il formato WebP riduce il peso dei file fino all'80% rispetto a JPG e PNG a parità di qualità.",
         faq3Q: "Ci sono limiti sul peso dei file?",
         faq3A: "Nessun limite: puoi elaborare immagini ad altissima risoluzione senza restrizioni.",
-        tipText: "Offrimi un caffè"
+        tipText: "Offrimi un caffè",
+        adTopBrand: "Vectorizer AI Suite",
+        adTopText: "Trasforma immagini sgranate in vettori SVG ultra-nitidi all'istante con l'AI.",
+        adTopBtn: "Prova Gratis",
+        adMidTitle: "Vuoi rimuovere lo sfondo dalle foto con AI?",
+        adMidDesc: "Cancella lo sfondo in 5 secondi con precisione al 100%. Ideale per e-commerce e creator.",
+        adMidBtn: "Rimuovi Sfondo Gratis"
       }
     };
 
@@ -573,6 +640,14 @@
       safeSetText('faq3-a', t.faq3A);
 
       safeSetText('tip-text', t.tipText);
+
+      // Sponsor & Promo Banner Localization
+      safeSetText('ad-top-brand', t.adTopBrand);
+      safeSetText('ad-top-text', t.adTopText);
+      safeSetText('ad-top-btn', t.adTopBtn);
+      safeSetText('ad-mid-title', t.adMidTitle);
+      safeSetText('ad-mid-desc', t.adMidDesc);
+      safeSetText('ad-mid-btn', t.adMidBtn);
     }
 
     let currentImage = null;
